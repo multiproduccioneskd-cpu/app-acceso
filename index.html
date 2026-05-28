@@ -15,155 +15,264 @@
         }
 
         body {
-            background-color: #f3f4f6;
+            background-color: #2b3a4a; /* Fondo oscuro similar al entorno del visor */
+            background-image: linear-gradient(135deg, #233040 25%, #1a2430 100%);
             color: #1f2937;
             padding: 16px;
-            padding-bottom: 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 600px;
+            width: 100%;
             margin: 0 auto;
         }
 
+        /* HEADER INSTITUCIONAL UGM */
         header {
-            text-align: center;
-            margin-bottom: 20px;
-            background-color: #1e3a8a;
+            background-color: #111e38;
             color: white;
-            padding: 16px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 18pt;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 10pt;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            border-left: 5px solid #d4af37; /* Detalle dorado corporativo */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-titles h1 {
+            font-size: 14pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-titles p {
+            font-size: 9pt;
+            opacity: 0.7;
+            margin-top: 2px;
+            font-weight: 300;
+        }
+
+        .live-clock {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-align: right;
+            font-size: 9pt;
+            color: #a5b4fc;
+            font-weight: bold;
+        }
+
+        /* TARJETAS ESTILO CONTENEDOR UGM */
+        .card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         h2 {
-            font-size: 13pt;
-            margin-bottom: 12px;
-            color: #374151;
-            border-left: 4px solid #1e3a8a;
-            padding-left: 8px;
+            font-size: 12pt;
+            margin-bottom: 16px;
+            color: #111e38;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        /* BOTONES DE FLUJO PRINCIPAL */
         .flow-btn {
             display: block;
             width: 100%;
-            padding: 16px;
-            margin-bottom: 12px;
+            padding: 18px;
+            margin-bottom: 14px;
             border: none;
             border-radius: 8px;
-            font-size: 14pt;
-            font-weight: bold;
+            font-size: 13pt;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.1s, background-color 0.2s;
+            transition: all 0.2s ease;
             text-align: center;
             color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .flow-btn:active {
             transform: scale(0.98);
         }
 
-        .btn-entrada { background-color: #059669; }
-        .btn-entrada:hover { background-color: #047857; }
-        .btn-salida { background-color: #dc2626; }
-        .btn-salida:hover { background-color: #b91c1c; }
-        .btn-secondary { background-color: #4b5563; font-size: 11pt; padding: 12px; }
+        .btn-entrada {
+            background-color: #1e4620; /* Verde institucional sutil para ingresos */
+        }
+        .btn-entrada:hover { background-color: #143016; }
 
-        /* Contenedor del Lector QR Real */
+        .btn-salida {
+            background-color: #7f1d1d; /* Rojo quemado para salidas */
+        }
+        .btn-salida:hover { background-color: #581414; }
+
+        .btn-secondary {
+            background-color: #475569;
+            font-size: 11pt;
+            padding: 12px;
+        }
+
+        /* CONTENEDOR DEL LECTOR MULTI-FORMATO (QR / BARRAS) */
         .scanner-container {
             display: none;
             text-align: center;
         }
 
-        /* Contenedor donde la librería incrustará el video de la cámara */
         #reader {
             width: 100%;
-            background-color: #111827;
+            background-color: #0f172a;
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 16px;
-            border: 3px solid #6b7280;
+            border: 3px solid #334155;
         }
 
-        /* Alerta de Éxito / Feedback */
+        /* PANTALLA DE RESULTADOS */
         .result-box {
             display: none;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 9999px;
+            padding: 6px 16px;
+            border-radius: 4px;
             font-weight: bold;
-            font-size: 10pt;
+            font-size: 9pt;
             color: white;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .badge-entrada { background-color: #059669; }
-        .badge-salida { background-color: #dc2626; }
+        .badge-entrada { background-color: #1e4620; }
+        .badge-salida { background-color: #7f1d1d; }
 
+        /* TABLA DE DATOS DEL VEHÍCULO */
         .data-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f3f4f6;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
             font-size: 11pt;
         }
 
-        .data-row span:first-child { color: #6b7280; font-weight: 500; }
-        .data-row span:last-child { color: #111827; font-weight: 600; }
+        .data-row span:first-child {
+            color: #64748b;
+            font-weight: 500;
+        }
 
-        .log-table-container { max-height: 200px; overflow-y: auto; margin-top: 8px; }
-        .log-item { padding: 10px; border-radius: 6px; background-color: #f9fafb; margin-bottom: 8px; font-size: 9.5pt; border-left: 4px solid #6b7280; }
-        .log-item.ENTRADA { border-left-color: #059669; }
-        .log-item.SALIDA { border-left-color: #dc2626; }
-        .log-meta { display: flex; justify-content: space-between; color: #9ca3af; font-size: 8.5pt; margin-top: 4px; }
-        .clear-btn { background: none; border: none; color: #9ca3af; font-size: 9pt; cursor: pointer; text-decoration: underline; float: right; }
+        .data-row span:last-child {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        /* HISTORIAL RECIENTE INFERIOR */
+        .log-title-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .log-table-container {
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .log-item {
+            padding: 12px;
+            border-radius: 6px;
+            background-color: #fff;
+            margin-bottom: 8px;
+            font-size: 10pt;
+            border-left: 4px solid #94a3b8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-item.ENTRADA { border-left-color: #1e4620; }
+        .log-item.SALIDA { border-left-color: #7f1d1d; }
+
+        .log-info-text strong { color: #111e38; }
+        .log-time-text { font-size: 8.5pt; color: #64748b; font-weight: bold; }
+
+        .clear-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 8.5pt;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .clear-btn:hover { color: #64748b; }
+
+        /* LÍNEA DE COLORES CORPORATIVA INFERIOR (ESTILO UGM) */
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 8pt;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .ugm-bar {
+            height: 4px;
+            width: 100%;
+            display: flex;
+        }
+        .bar-blue  { flex: 3; background-color: #111e38; }
+        .bar-lightblue { flex: 2; background-color: #3b82f6; }
+        .bar-gold  { flex: 1; background-color: #d4af37; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Control de Estacionamiento</h1>
-        <p>Visor de Validación - Cámara QR Activa</p>
+        <div class="header-titles">
+            <h1>Visor de Acceso Estacionamiento</h1>
+            <p>UNIVERSIDAD GABRIELA MISTRAL — VISTA GUARDIA</p>
+        </div>
+        <div class="live-clock" id="live-clock">
+            Cargando...
+        </div>
     </header>
 
     <div id="step-mode" class="card">
-        <h2>¿Qué registro deseas realizar?</h2>
+        <h2>Seleccione Operación:</h2>
         <button class="flow-btn btn-entrada" onclick="selectMode('ENTRADA')">📥 REGISTRAR ENTRADA</button>
         <button class="flow-btn btn-salida" onclick="selectMode('SALIDA')">📤 REGISTRAR SALIDA</button>
     </div>
 
     <div id="step-scanner" class="card scanner-container">
-        <h2>Escaneando Tarjeta (<span id="current-mode-label"></span>)</h2>
-        <p style="font-size: 9.5pt; color: #6b7280; margin-bottom: 12px;">Apunta al código QR de la credencial</p>
+        <h2>Escaneando Código (<span id="current-mode-label" style="font-weight: bold;"></span>)</h2>
+        <p style="font-size: 9.5pt; color: #64748b; margin-bottom: 16px;">Calce el código QR o código de barras de activo fijo dentro del recuadro</p>
         
         <div id="reader"></div>
         
@@ -172,44 +281,69 @@
 
     <div id="step-result" class="card result-box">
         <div id="result-badge" class="badge">ENTRADA REGISTRADA</div>
-        <h2>Datos del Vehículo / Funcionario</h2>
+        <h2>Datos Asignados al Vehículo / Item</h2>
         
-        <div class="data-row"><span>Nombre:</span><span id="res-nombre">-</span></div>
-        <div class="data-row"><span>RUT leído:</span><span id="res-rut">-</span></div>
-        <div class="data-row"><span>Cargo:</span><span id="res-cargo">-</span></div>
-        <div class="data-row"><span>Patente:</span><span id="res-patente">-</span></div>
-        <div class="data-row"><span>Vehículo:</span><span id="res-vehiculo">-</span></div>
-        <div class="data-row"><span>Fecha/Hora:</span><span id="res-hora">-</span></div>
+        <div class="data-row"><span>Nombre / Responsable:</span><span id="res-nombre">-</span></div>
+        <div class="data-row"><span>ID / RUT Leído:</span><span id="res-rut">-</span></div>
+        <div class="data-row"><span>Cargo / Depto:</span><span id="res-cargo">-</span></div>
+        <div class="data-row"><span>Patente / Código:</span><span id="res-patente">-</span></div>
+        <div class="data-row"><span>Vehículo / Activo:</span><span id="res-vehiculo">-</span></div>
+        <div class="data-row"><span>Fecha / Hora:</span><span id="res-hora">-</span></div>
 
-        <button class="flow-btn btn-entrada" style="background-color: #1e3a8a; margin-top: 20px;" onclick="resetFlow()">
-            🔄 Siguiente Vehículo
+        <button class="flow-btn" style="background-color: #111e38; margin-top: 20px;" onclick="resetFlow()">
+            🔄 Siguiente Lectura
         </button>
     </div>
 
-    <div class="card">
-        <button class="clear-btn" onclick="clearLogs()">Limpiar historial</button>
-        <h2>Últimos movimientos (Guardados local)</h2>
+    <div class="card" style="padding: 18px;">
+        <div class="log-title-area">
+            <h2>Últimos registros de la jornada</h2>
+            <button class="clear-btn" onclick="clearLogs()">Limpiar</button>
+        </div>
         <div id="log-table" class="log-table-container">
-            <p style="color: #9ca3af; font-size: 10pt; text-align: center; padding: 10px;">No hay registros en esta sesión.</p>
+            <p style="color: #94a3b8; font-size: 9.5pt; text-align: center; padding: 10px;">No hay registros recientes.</p>
         </div>
     </div>
 </div>
 
+<footer>
+    <p class="footer-text">Universidad Gabriela Mistral — Construyendo Nuestra Huella</p>
+    <div class="ugm-bar">
+        <div class="bar-blue"></div>
+        <div class="bar-lightblue"></div>
+        <div class="bar-gold"></div>
+    </div>
+</footer>
+
 <script>
-    // BASE DE DATOS FICTICIA PARA EL CRUCE DE DATOS
-    // Para probar la cámara, tus códigos QR deben contener EXACTAMENTE alguno de estos RUTs como texto.
-    // Ej: Crea un QR en internet que diga "11.111.111-1" o "22.222.222-2" para ver la magia.
+    // BASE DE DATOS LOCAL PARA SIMULACIÓN Y CRUCE DE DATOS
+    // Funciona igual si lee un RUT (Credencial) o un código numérico (Activo Fijo)
     const dbUsuarios = {
-        "11.111.111-1": { nombre: "Felipe Berríos", cargo: "Técnico AV", patente: "AB-CD-12", auto: "Subaru Impreza WRX (Azul)" },
-        "22.222.222-2": { nombre: "Tomás González", cargo: "Docente", patente: "FE-GE-34", auto: "Toyota Yaris (Gris)" },
-        "33.333.333-3": { nombre: "Patricia Angel", cargo: "Directiva", patente: "XY-ZZ-99", auto: "Mazda CX-5 (Rojo)" },
-        "44.444.444-4": { nombre: "Martín Berríos", cargo: "Alumno", patente: "KK-LL-55", auto: "Suzuki Swift (Blanco)" }
+        "11.111.111-1": { nombre: "Felipe Berríos", cargo: "Técnico AV", patente: "AB-CD-12", auto: "Subaru Impreza WRX" },
+        "22.222.222-2": { nombre: "Tomás González", cargo: "Docente", patente: "FE-GE-34", auto: "Toyota Yaris" },
+        "33.333.333-3": { nombre: "Patricia Angel", cargo: "Directiva", patente: "XY-ZZ-99", auto: "Mazda CX-5" },
+        // Ejemplo de código de barra para activo fijo
+        "7501055305275": { nombre: "Laboratorio Audiovisual", cargo: "Activo Fijo", patente: "UGM-PROY-04", auto: "Proyector Epson PowerLite" }
     };
 
     let selectedMode = ""; 
     let html5QrcodeScanner = null;
 
-    // Cambiar a pantalla de escáner e iniciar cámara
+    // Reloj digital superior idéntico al visor de reuniones
+    function updateClock() {
+        const ahora = new Date();
+        const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const fechaLetras = ahora.toLocaleDateString('es-ES', opcionesFecha);
+        const horaLetras = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        
+        // Capitalizar primera letra de la fecha
+        const fechaCapitalizada = fechaLetras.charAt(0).toUpperCase() + fechaLetras.slice(1);
+        
+        document.getElementById('live-clock').innerHTML = `${fechaCapitalizada}<br><span style="font-size:11pt; color:white;">${horaLetras}</span>`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
     function selectMode(mode) {
         selectedMode = mode;
         document.getElementById('current-mode-label').innerText = mode;
@@ -219,92 +353,74 @@
         startScanner();
     }
 
-    // Inicializar la cámara del dispositivo
+    // Inicializar la cámara configurada para multi-formato (QR y Barras alargadas)
     function startScanner() {
-        // Configuramos el lector (cuadro de escaneo, fps, etc)
         html5QrcodeScanner = new Html5Qrcode("reader");
         
         const config = { 
-            fps: 10, 
-            qrbox: { width: 250, height: 250 },
-            // Prioriza la cámara trasera en celulares
+            fps: 15, 
+            qrbox: { width: 300, height: 160 }, // Rectángulo plano adaptado para capturar barras y QR fluidamente
             aspectRatio: 1.0
         };
 
-        // Arrancar la cámara trasera
         html5QrcodeScanner.start(
             { facingMode: "environment" }, 
             config,
-            onScanSuccess, // Función si lee el QR con éxito
-            onScanFailure  // Función si no lee nada en el cuadro (opcional)
+            onScanSuccess, 
+            onScanFailure
         ).catch(err => {
-            alert("Error al abrir la cámara. Asegúrate de dar permisos: " + err);
+            alert("Error al abrir la cámara. Recuerda usar HTTPS en Vercel y otorgar los permisos de cámara.\n\nDetalle: " + err);
             stopScanner();
         });
     }
 
-    // ¿Qué pasa cuando detecta un código QR válido?
     function onScanSuccess(decodedText, decodedResult) {
-        // Detener la cámara inmediatamente para que no siga escaneando en bucle
         html5QrcodeScanner.stop().then(() => {
             processScannedData(decodedText.trim());
-        }).catch(err => {
-            console.error("Error al detener la cámara", err);
+        }).catch(() => {
             processScannedData(decodedText.trim());
         });
     }
 
     function onScanFailure(error) {
-        // Esta función corre continuamente mientras busca un QR. La dejamos muda para no saturar la consola.
+        // Silencioso mientras busca líneas o patrones QR
     }
 
-    // Procesar el texto que venía dentro del QR
-    function processScannedData(textoQR) {
-        // Buscamos si el texto (RUT) existe en nuestra base de datos
-        const infoUsuario = dbUsuarios[textoQR];
-        
+    function processScannedData(codigoLeido) {
+        const infoUsuario = dbUsuarios[codigoLeido];
         const ahora = new Date();
-        const horaString = ahora.toLocaleDateString() + ' ' + ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const horaString = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         if (infoUsuario) {
-            // Caso 1: Encontró el RUT en el Excel/DB ficticia
             document.getElementById('res-nombre').innerText = infoUsuario.nombre;
-            document.getElementById('res-rut').innerText = textoQR;
+            document.getElementById('res-rut').innerText = codigoLeido;
             document.getElementById('res-cargo').innerText = infoUsuario.cargo;
             document.getElementById('res-patente').innerText = infoUsuario.patente;
             document.getElementById('res-vehiculo').innerText = infoUsuario.auto;
         } else {
-            // Caso 2: El QR leyó algo pero el RUT no está inscrito en la base de datos de vehículos
-            document.getElementById('res-nombre').innerText = "Desconocido / No registrado";
-            document.getElementById('res-rut').innerText = textoQR;
+            // Manejo por si escanean un código que no está cargado en la lista
+            document.getElementById('res-nombre').innerText = "No registrado en la base de datos";
+            document.getElementById('res-rut').innerText = codigoLeido;
             document.getElementById('res-cargo').innerText = "N/A";
-            document.getElementById('res-patente').innerText = "SIN PATENTE REGISTRADA";
-            document.getElementById('res-vehiculo').innerText = "N/A";
+            document.getElementById('res-patente').innerText = "SIN DATOS";
+            document.getElementById('res-vehiculo').innerText = "Objeto / Persona Desconocida";
         }
 
-        document.getElementById('res-hora').innerText = horaString;
+        document.getElementById('res-hora').innerText = ahora.toLocaleDateString() + ' — ' + horaString;
 
-        // Configurar el color de la tarjeta de éxito
         const badge = document.getElementById('result-badge');
         badge.innerText = selectedMode + " REGISTRADA";
         badge.className = selectedMode === "ENTRADA" ? "badge badge-entrada" : "badge badge-salida";
 
-        // Guardar en el historial visual de abajo
-        saveLog(selectedMode, infoUsuario ? infoUsuario.nombre : "Desconocido ("+textoQR+")", infoUsuario ? infoUsuario.patente : "S/P", horaString);
+        saveLog(selectedMode, infoUsuario ? infoUsuario.nombre : "Desconocido ("+codigoLeido+")", infoUsuario ? infoUsuario.patente : "S/P", horaString);
 
-        // Mostrar pantalla de resultados
         document.getElementById('step-scanner').style.display = 'none';
         document.getElementById('step-result').style.display = 'block';
     }
 
-    // Detener la cámara manualmente si cancela
     function stopScanner() {
         if (html5QrcodeScanner && html5QrcodeScanner.isScanning) {
-            html5QrcodeScanner.stop().then(() => {
-                goBack();
-            }).catch(() => {
-                goBack();
-            });
+            html5QrcodeScanner.stop().then(() => { goBack(); }).catch(() => { goBack(); });
         } else {
             goBack();
         }
@@ -320,36 +436,35 @@
         document.getElementById('step-mode').style.display = 'block';
     }
 
-    // Historial Local
-    function saveLog(tipo, nombre, patente, hora) {
-        let logs = JSON.parse(localStorage.getItem('parking_logs')) || [];
-        logs.unshift({ tipo, nombre, patente, hora });
-        localStorage.setItem('parking_logs', JSON.stringify(logs));
+    // Persistencia básica en memoria de navegador
+    function saveLog(tipo, nombre, identificador, hora) {
+        let logs = JSON.parse(localStorage.getItem('ugm_parking_logs')) || [];
+        logs.unshift({ tipo, nombre, identificador, hora });
+        localStorage.setItem('ugm_parking_logs', JSON.stringify(logs));
         renderLogs();
     }
 
     function renderLogs() {
         const container = document.getElementById('log-table');
-        let logs = JSON.parse(localStorage.getItem('parking_logs')) || [];
+        let logs = JSON.parse(localStorage.getItem('ugm_parking_logs')) || [];
         
         if (logs.length === 0) {
-            container.innerHTML = '<p style="color: #9ca3af; font-size: 10pt; text-align: center; padding: 10px;">No hay registros en esta sesión.</p>';
+            container.innerHTML = '<p style="color: #94a3b8; font-size: 9.5pt; text-align: center; padding: 10px;">No hay registros recientes.</p>';
             return;
         }
 
         container.innerHTML = logs.map(log => `
             <div class="log-item ${log.tipo}">
-                <strong>${log.tipo}:</strong> ${log.nombre} — <span style="color:#1e3a8a; font-weight:bold;">${log.patente}</span>
-                <div class="log-meta">
-                    <span>Registro Exitoso</span>
-                    <span>${log.hora}</span>
+                <div class="log-info-text">
+                    <strong>${log.tipo}:</strong> ${log.nombre} <span style="color:#3b82f6; margin-left:5px;">[${log.identificador}]</span>
                 </div>
+                <div class="log-time-text">${log.hora}</div>
             </div>
         `).join('');
     }
 
     function clearLogs() {
-        localStorage.removeItem('parking_logs');
+        localStorage.removeItem('ugm_parking_logs');
         renderLogs();
     }
 
